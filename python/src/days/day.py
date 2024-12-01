@@ -1,4 +1,3 @@
-
 from pathlib import Path
 
 class Day:
@@ -12,3 +11,4 @@ class Day:
         filepath = Path("resources") / filename
         with open(filepath, "r") as file:
             return file.read()
+        
