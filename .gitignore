@@ -1,0 +1,75 @@
+# Compiled class files
+*.class
+*.pb
+*.pyc
+__pycache__/
+
+# Log files
+*.log
+logs/
+
+# Build directories
+target/
+build/
+dist/
+out/
+*.egg-info/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.iml
+*.ipr
+*.iws
+
+# Java specific
+*.jar
+*.war
+*.nar
+*.ear
+
+# Python specific
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+.venv/
+
+# Dependency directories
+lib/
+libs/
+node_modules/
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+
+# Package files
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+
+# Temporary files
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Unit test / coverage reports
+.tox/
+.coverage
+.coverage.*
+.cache
+.pytest_cache/
+htmlcov/
+coverage.xml
