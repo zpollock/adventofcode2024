@@ -16,12 +16,12 @@ def main():
     #Day2
     # day_processor = getDayProcessor("day2")    
     # result = day_processor.process("d2_1_sample.txt") 
-    # assert result == None
+    # assert result == 2
     # result = day_processor.process("d2_1.txt")
     # print(f"Result: {result}")
 
     # result = day_processor.process("d2_1_sample.txt", True)
-    # assert result == None
+    # assert result == 4
     # result = day_processor.process("d2_1.txt", True) 
     # print(f"Result: {result}")
         

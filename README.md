@@ -12,7 +12,7 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | Day | Solutions     | Status        | Difficulty  | 🏆 Mood              
 |-----|---------------|---------------|-------------|-----------------------
 | 1   | Java + Python | Complete      | Easy Enough | 😏 Smug Success      
-| 2   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 2   | Java          | Complete      | Heating Up  | 👌 Smooth Sailing
 | 3   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 4   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 5   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
