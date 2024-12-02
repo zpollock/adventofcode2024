@@ -2,7 +2,7 @@
 
 ## Welcome Y'all! 🎁
 
-This repository is my personal repo for tackling the daily challenges of [Advent of Code](https://adventofcode.com/2024)
+This is my personal repo for tackling the daily challenges of [Advent of Code](https://adventofcode.com/2024)
 
 ### 🌟 What's This All About?
 
