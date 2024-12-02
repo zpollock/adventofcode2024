@@ -1,6 +1,6 @@
 # 🎄 Advent of Code 2024 🧊
 
-## Welcome Y'all! 🎁
+## Howdy Y'all! 🎁
 
 This is my personal repo for tackling the daily challenges of [Advent of Code](https://adventofcode.com/2024)
 
