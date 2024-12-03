@@ -56,11 +56,12 @@ public class Day3 extends Day {
         int product_sum = 0;
         String line = reader.lines().collect(Collectors.joining());   
         
-        product_sum += partTwoHelper(line, regex);          
+        line = processLine(line);
+        product_sum += partOneHelper(line, regex);          
         return String.valueOf(product_sum);
     }
 
-    private static int partTwoHelper(String line, String regex) {
+    private static String processLine(String line) {
         int dont_index;
         while ((dont_index = line.indexOf("don't()")) > 0) {
             int do_index = line.indexOf("do()", dont_index + "don't()".length());
@@ -70,6 +71,6 @@ public class Day3 extends Day {
                 line = line.substring(0, dont_index);
             }            
         }
-        return partOneHelper(line, regex);
+        return line;
     }
 }

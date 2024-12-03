@@ -13,16 +13,16 @@ def main():
     # result = day_processor.process("d1_1.txt", True) 
     # print(f"Result: {result}")
     
-    #Day2
-    day_processor = getDayProcessor("day2")    
-    result = day_processor.process("d2_1_sample.txt") 
-    assert result == 2
-    result = day_processor.process("d2_1.txt")
+    #Day3
+    day_processor = getDayProcessor("day3")    
+    result = day_processor.process("d3_1_sample.txt") 
+    assert result == '161'
+    result = day_processor.process("d3_1.txt")
     print(f"Result: {result}")
 
-    result = day_processor.process("d2_1_sample.txt", True)
-    assert result == 4
-    result = day_processor.process("d2_1.txt", True) 
+    result = day_processor.process("d3_2_sample.txt", True)
+    assert result == '48'
+    result = day_processor.process("d3_1.txt", True) 
     print(f"Result: {result}")
         
 def getDayProcessor(day_module):
