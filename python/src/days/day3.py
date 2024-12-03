@@ -38,8 +38,8 @@ def process_line(line):
         dont_index = line.index("don't()")
         do_index = line.find("do()", dont_index + 6)
         if do_index > 0:
-            line = line[:dont_index] + line[do_index+4:]
-        else :                
+            line = line[:dont_index] + line[do_index + 4:]
+        else:                
             line = line[:dont_index]
 
     return line
