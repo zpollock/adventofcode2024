@@ -12,10 +12,10 @@ public class Main {
         // Assert.assertEquals("31", processDay("d1_1_sample.txt", new Day1(), true));//Part 2
         // processDay("d1_1.txt", new Day1(), true);//Part 2         
         //Day3
-        Assert.assertEquals("161", processDay("d3_1_sample.txt", new Day3(), false));
-        processDay("d3_1.txt", new Day3(), false);        
-        Assert.assertEquals("48", processDay("d3_2_sample.txt", new Day3(), true)); //Part 2
-        processDay("d3_1.txt", new Day3(), true); //Part 2  
+        Assert.assertEquals("18", processDay("d4_1_sample.txt", new Day4(), false));
+        processDay("d4_1.txt", new Day4(), false);        
+        Assert.assertEquals("9", processDay("d4_1_sample.txt", new Day4(), true)); //Part 2
+        processDay("d4_1.txt", new Day4(), true); //Part 2  
     }
 
     private static String processDay(String dayInputFile, Day dayProcessor, boolean isPart2) {
