@@ -64,14 +64,7 @@ public class Day4 extends Day {
             return true;
         }
         
-        return dfsSearch(
-            grid, 
-            row + direction[0], 
-            col + direction[1], 
-            word, 
-            index + 1, 
-            direction
-        );
+        return dfsSearch(grid, row + direction[0], col + direction[1], word, index + 1, direction);
     }
 
     private static String partTwo(BufferedReader reader) throws IOException {
