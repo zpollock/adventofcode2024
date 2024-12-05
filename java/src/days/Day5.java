@@ -90,7 +90,7 @@ public class Day5 extends Day {
             if (isValid(updateArray, gtMap, 0) == -1) continue;
             int startIndex = 0;
             while((startIndex = isValid(updateArray, gtMap, startIndex)) != -1) {
-                makeValid(updateArray, gtMap, startIndex);                
+                startIndex = makeValid(updateArray, gtMap, startIndex);                
             }
             int middleValue = updateArray[updateArray.length / 2];
             middleSum += middleValue;
@@ -99,7 +99,7 @@ public class Day5 extends Day {
         return String.valueOf(middleSum);
     }
 
-    private static void makeValid(Integer[] updateArray, HashMap<Integer, HashSet<Integer>> gtMap, int startIndex) {
+    private static int makeValid(Integer[] updateArray, HashMap<Integer, HashSet<Integer>> gtMap, int startIndex) {
         for (int i = startIndex; i < updateArray.length; i++) {
             for (int j = i + 1; j < updateArray.length; j++) {
                 HashSet<Integer> gts = gtMap.get(updateArray[i]);
@@ -107,9 +107,10 @@ public class Day5 extends Day {
                     int temp = updateArray[i];
                     updateArray[i] = updateArray[j];
                     updateArray[j] = temp;
-                    return;
+                    return i;
                 }
             }
         }
+        return updateArray.length;
     }    
 }
