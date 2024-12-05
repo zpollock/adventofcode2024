@@ -1,6 +1,11 @@
 package src.helpers;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Set;
 import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.StringUtils;
@@ -88,4 +93,109 @@ public class Utils {
         
         return count;
     }
+
+    public static boolean dfsSearch(char[][] grid, int row, int col, String word, int index, boolean[][] visited, int[][] directions) {
+        if (row < 0 || row >= grid.length || col < 0 || col >= grid[0].length || visited[row][col] || grid[row][col] != word.charAt(index)) {
+            return false;
+        }
+
+        if (index == word.length() - 1) {
+            return true;
+        }
+
+        visited[row][col] = true;
+
+        for (int[] direction : directions) {
+            if (dfsSearch(grid, row + direction[0], col + direction[1], word, index + 1, visited, directions)) {
+                return true;
+            }
+        }
+
+        visited[row][col] = false;
+        return false;
+    }
+
+    public static boolean bfsSearch(char[][] grid, String word, int[][] directions) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+
+        Queue<int[]> queue = new LinkedList<>();
+        Set<String> visited = new HashSet<>();
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (grid[i][j] == word.charAt(0)) {
+                    queue.offer(new int[]{i, j, 0}); 
+                    visited.add(i + "," + j);
+                }
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            int[] current = queue.poll();
+            int row = current[0];
+            int col = current[1];
+            int index = current[2];
+
+            if (index == word.length() - 1) {
+                return true;
+            }
+
+            for (int[] direction : directions) {
+                int newRow = row + direction[0];
+                int newCol = col + direction[1];
+
+                if (isValid(newRow, newCol, grid) && !visited.contains(newRow + "," + newCol) && grid[newRow][newCol] == word.charAt(index + 1)) {
+                    queue.offer(new int[]{newRow, newCol, index + 1});
+                    visited.add(newRow + "," + newCol);
+                }
+            }
+        }
+
+        return false;
+    }
+
+    public static boolean isValid(int row, int col, char[][] grid) {
+        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
+    }
+
+    public static char[][] convertToCharGrid(ArrayList<String> grid) {
+        char[][] charGrid = new char[grid.size()][];
+        for (int i = 0; i < grid.size(); i++) {
+            charGrid[i] = grid.get(i).toCharArray();
+        }
+        return charGrid;
+    }
+
+    public static int[][] convertToIntGrid(ArrayList<String> grid) {
+        int[][] intGrid = new int[grid.size()][];
+        for (int i = 0; i < grid.size(); i++) {
+            intGrid[i] = grid.get(i).chars()
+                .map(Character::getNumericValue)
+                .toArray();
+        }
+        return intGrid;
+    }
+
+    public static int[][] convertToIntGridUsingSpaces(ArrayList<String> grid) {
+        int[][] intGrid = new int[grid.size()][];
+        for (int i = 0; i < grid.size(); i++) {
+            intGrid[i] = Arrays.stream(grid.get(i).split("\\s+"))
+                .mapToInt(Integer::parseInt)
+                .toArray();
+        }
+        return intGrid;
+    }
+
+    public static final int[][] DIRECTIONS = {
+        {1, 0},    
+        {0, 1},    
+        {-1, 0},   
+        {0, -1},   
+        {-1, -1},  //Diagonals
+        {1, -1},   
+        {-1, 1},   
+        {1, 1}     
+    };
+
 }
