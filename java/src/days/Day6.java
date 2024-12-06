@@ -10,6 +10,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 
 import src.helpers.Utils;
 
@@ -27,30 +28,27 @@ public class Day6 extends Day {
 
     private static String partOne(BufferedReader reader, boolean isPart2) throws IOException {
         String line;
-
         ArrayList<String> gridString = new ArrayList<>();
+        int row = 0, col = 0, direction = 0;
+
+        Map<Character, Integer> directionMap = Map.of(
+            '^', 0,
+            '>', 1,
+            'v', 2,
+            '<', 3
+        );
+
         int lineCount = 0;
-        int row = 0;
-        int col = 0;
-        int direction = 0;
         while ((line = reader.readLine()) != null) {
             gridString.add(line);
-            if(line.contains("^")) {
-                row = lineCount;
-                col = line.indexOf("^"); 
-                direction = 0;
-            } else if (line.contains(">")) {
-                row = lineCount;
-                col = line.indexOf(">"); 
-                direction = 1;
-            } else if (line.contains("v")) {
-                row = lineCount;
-                col = line.indexOf("v"); 
-                direction = 2;
-            }  else if (line.contains("<")) {
-                row = lineCount;
-                col = line.indexOf("<"); 
-                direction = 3;
+            for (Map.Entry<Character, Integer> entry : directionMap.entrySet()) {
+                char symbol = entry.getKey();
+                if (line.contains(String.valueOf(symbol))) {
+                    row = lineCount;
+                    col = line.indexOf(symbol);
+                    direction = entry.getValue();
+                    break;
+                }
             }
             lineCount++;
         }
