@@ -19,10 +19,10 @@ class Day7(Day):
 
 
 def parse_input(reader, is_part2):
-    lines = []
-
-    for line in reader:
-        lines.append(line.strip().split())
+    lines = [line.strip().split() for line in reader]
+    # lines = []
+    # for line in reader:
+    #     lines.append(line.strip().split())
 
     result = calibration_helper(lines, is_part2)
     return str(result)
@@ -31,7 +31,7 @@ def parse_input(reader, is_part2):
 def calibration_helper(lines, is_part2):
     result = 0
     for line in lines:
-        value = int(line[0].replace(":", ""))
+        value = int(line[0][:-1])
         if is_valid_test(line, 1, 0, value, is_part2):
             result += value
     return result
