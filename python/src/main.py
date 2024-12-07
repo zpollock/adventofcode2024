@@ -1,28 +1,16 @@
 import importlib
 
 def main():    
-    #Day1
-    # day_processor = getDayProcessor("day1")    
-    # result = day_processor.process("d1_1_sample.txt")
-    # assert result == '11'
-    # result = day_processor.process("d1_1.txt")
-    # print(f"Result: {result}")
-
-    # result = day_processor.process("d1_1_sample.txt", True)
-    # assert result == '31' 
-    # result = day_processor.process("d1_1.txt", True) 
-    # print(f"Result: {result}")
-    
-    #Day3
-    day_processor = getDayProcessor("day3")    
-    result = day_processor.process("d3_1_sample.txt") 
-    assert result == '161'
-    result = day_processor.process("d3_1.txt")
+    #Day7
+    day_processor = getDayProcessor("day7")    
+    result = day_processor.process("d7_1_example.txt") 
+    assert result == '3749'
+    result = day_processor.process("d7_1.txt")
     print(f"Result: {result}")
 
-    result = day_processor.process("d3_2_sample.txt", True)
-    assert result == '48'
-    result = day_processor.process("d3_1.txt", True) 
+    result = day_processor.process("d7_1_example.txt", True)
+    assert result == '11387'
+    result = day_processor.process("d7_1.txt", True) 
     print(f"Result: {result}")
         
 def getDayProcessor(day_module):

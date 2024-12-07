@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 
 public class Day7 extends Day {
+
     @Override
     public String process(String inputFileName, boolean isPart2) {        
         Path filePath = Path.of("resources", inputFileName);
@@ -30,7 +31,6 @@ public class Day7 extends Day {
         }
 
         ret = calibrationHelper(lines, isPart2);                    
-
         return String.valueOf(ret);
     }
 
@@ -45,21 +45,15 @@ public class Day7 extends Day {
 
 
     private static boolean isValidTest(String[] line, int pos, long exp_value, long value, boolean isPart2) {
-        if(pos == line.length && value == exp_value){
-            return true;
-        }
+        if(pos == line.length) return value == exp_value;
 
-        if(pos == line.length) return false;
-        long curr_value = Long.parseLong(line[pos]);
-        
+        long curr_value = Long.parseLong(line[pos]);        
         if(isValidTest(line, pos + 1, exp_value + curr_value, value, isPart2)) return true;
         if(isValidTest(line, pos + 1, (exp_value == 0) ? curr_value : exp_value * curr_value, value, isPart2)) return true;
-
+        
         if(isPart2 && pos <= line.length - 1)
             if(isValidTest(line, pos + 1, Long.parseLong(exp_value + "" + curr_value), value, isPart2)) return true; 
-        
-        
+                
         return false;        
-
     }
 }
