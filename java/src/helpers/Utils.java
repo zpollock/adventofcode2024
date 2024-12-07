@@ -145,7 +145,7 @@ public class Utils {
                 int newRow = row + direction[0];
                 int newCol = col + direction[1];
 
-                if (isValid(newRow, newCol, grid) && !visited.contains(newRow + "," + newCol) && grid[newRow][newCol] == word.charAt(index + 1)) {
+                if (isInBounds(newRow, newCol, grid) && !visited.contains(newRow + "," + newCol) && grid[newRow][newCol] == word.charAt(index + 1)) {
                     queue.offer(new int[]{newRow, newCol, index + 1});
                     visited.add(newRow + "," + newCol);
                 }
@@ -155,7 +155,7 @@ public class Utils {
         return false;
     }
 
-    public static boolean isValid(int row, int col, char[][] grid) {
+    public static boolean isInBounds(int row, int col, char[][] grid) {
         return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
     }
 
