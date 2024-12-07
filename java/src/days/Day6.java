@@ -54,41 +54,58 @@ public class Day6 extends Day {
         }
         char[][] grid = Utils.convertToCharGrid(gridString);
 
-        HashSet<String> visited = pathVisited(grid, row, col, direction);
-        return isPart2 ? String.valueOf(partTwoHelper(grid, row, col, direction, visited)) : String.valueOf(visited.size());
+        HashSet<String> visited = new HashSet<>();
+        HashMap<String, String> visitedPath = new HashMap<>();
+        pathVisited(grid, row, col, direction, visited, visitedPath);
+        return isPart2 ? String.valueOf(partTwoHelper(grid, row, col, direction, visited, visitedPath)) : String.valueOf(visited.size());
     }
 
-    private static HashSet<String> pathVisited(char[][] grid, int row, int col, int direction) {
-        HashSet<String> visited = new HashSet<>();
+    private static boolean pathVisited(char[][] grid, int row, int col, int direction, HashSet<String> visited, HashMap<String, String> visitedPath) {
         HashSet<String> visitedDirection = new HashSet<>();
         while(!visitedDirection.contains(row + "," + col + "," + direction)) {
             visited.add(row + "," + col);
             visitedDirection.add(row + "," + col + "," + direction);
             if(direction == 0) {//U
-                if(!Utils.isInBounds(row -1, col, grid)) return visited;
+                if(!Utils.isInBounds(row -1, col, grid)) return true;
 
                 if(grid[row -1][col] != '#') {
+                    String key = (row-1)+","+(col);
+                    if(visitedPath != null && !visitedPath.containsKey(key)) {
+                        visitedPath.put(key, row + "," + col + "," + direction);
+                    }
                     row--;
                 } else {
                     direction = 1;
                 } 
             } else if (direction == 1) {//R
-                if(!Utils.isInBounds(row, col+1, grid)) return visited;
+                if(!Utils.isInBounds(row, col+1, grid)) return true;
                 if(grid[row][col+1] != '#') {
+                    String key = (row)+","+(col+1);
+                    if(visitedPath != null && !visitedPath.containsKey(key)) {
+                        visitedPath.put(key, row + "," + col + "," + direction);
+                    }
                     col++;
                 } else {
                     direction = 2;
                 }
             } else if (direction == 2) {//D
-                if(!Utils.isInBounds(row +1, col, grid)) return visited;
+                if(!Utils.isInBounds(row +1, col, grid)) return true;
                 if(grid[row + 1][col] != '#') {
+                    String key = (row+1)+","+(col);
+                    if(visitedPath != null && !visitedPath.containsKey(key)) {
+                        visitedPath.put(key, row + "," + col + "," + direction);
+                    }
                     row++;
                 } else {
                     direction = 3;
                 }
             } else if (direction == 3) {//L
-                if(!Utils.isInBounds(row, col-1, grid)) return visited;
+                if(!Utils.isInBounds(row, col-1, grid)) return true;
                 if(grid[row][col-1] != '#') {
+                    String key = (row)+","+(col-1);
+                    if(visitedPath != null && !visitedPath.containsKey(key)) {
+                        visitedPath.put(key, row + "," + col + "," + direction);
+                    }
                     col--;
                 } else {
                     direction = 0;
@@ -96,22 +113,21 @@ public class Day6 extends Day {
             }
         }
 
-        return null;
+        return false;
     }
 
-    private static int partTwoHelper(char[][] grid, int row, int col, int direction, HashSet<String> visited) {
+    private static int partTwoHelper(char[][] grid, int row, int col, int direction, HashSet<String> visited, HashMap<String, String> visitedPath) {
         int loops = 0;
-        for (String entry : visited) {
-            String[] coords = entry.split(",");
-            int i = Integer.parseInt(coords[0]);
-            int j = Integer.parseInt(coords[1]);
-            if(grid[i][j] == '.') {
-                grid[i][j] = '#';
-                if(pathVisited(grid, row, col, direction) == null) {
-                    loops++;
-                }
-                grid[i][j] = '.';
-            }   
+        for (String entry : visitedPath.keySet()) {
+            String[] obstruction_coords = entry.split(",");
+            int obstruction_i = Integer.parseInt(obstruction_coords[0]);
+            int obstruction_j = Integer.parseInt(obstruction_coords[1]);
+            grid[obstruction_i][obstruction_j] = '#';
+            String[] coords = visitedPath.get(entry).split(",");
+            if(!pathVisited(grid, Integer.parseInt(coords[0]), Integer.parseInt(coords[1]), Integer.parseInt(coords[2]), new HashSet<>(), null)) {
+                loops++;
+            }            
+            grid[obstruction_i][obstruction_j] = '.';
         }
         return loops;
     }
