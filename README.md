@@ -18,7 +18,7 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 5   | Java          | Complete      | Moderate    | 🤷 Puzzle Solved
 | 6   | Java          | Complete      | Easy if you read the directions     | 🔧 Functional, Not Fancy
 | 7   | Java + Python | Complete      | Basic     | ⚡ Crushed It 
-| 8   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 8   | Java          | Complete      | Too Easy  | 🔧 Not Beautiful, But Whatever
 | 9   | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 10  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 11  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 

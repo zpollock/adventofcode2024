@@ -186,16 +186,4 @@ public class Utils {
         }
         return intGrid;
     }
-
-    public static final int[][] DIRECTIONS = {
-        {1, 0},    
-        {0, 1},    
-        {-1, 0},   
-        {0, -1},   
-        {-1, -1},  //Diagonals
-        {1, -1},   
-        {-1, 1},   
-        {1, 1}     
-    };
-
 }

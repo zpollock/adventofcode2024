@@ -8,6 +8,8 @@ import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
+import src.helpers.Coordinate;
+
 public class Day4 extends Day {
     @Override
     public String process(String inputFileName, boolean isPart2) {        
@@ -34,7 +36,7 @@ public class Day4 extends Day {
     }
 
     private static int countWordDFS(ArrayList<String> grid, String word) {
-        int[][] directions = {{0, -1},{0, 1},{-1, 0},{1, 0},{1, -1},{1, 1},{-1, -1},{-1, 1}};
+        int[][] directions = Coordinate.DIRECTIONS;
         int count = 0;
         
         for (int row = 0; row < grid.size(); row++) {

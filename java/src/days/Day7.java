@@ -45,14 +45,15 @@ public class Day7 extends Day {
 
 
     private static boolean isValidTest(String[] line, int pos, long exp_value, long value, boolean isPart2) {
+        if(exp_value > value) return false;
         if(pos == line.length) return value == exp_value;
 
         long curr_value = Long.parseLong(line[pos]);        
         if(isValidTest(line, pos + 1, exp_value + curr_value, value, isPart2)) return true;
         if(isValidTest(line, pos + 1, (exp_value == 0) ? curr_value : exp_value * curr_value, value, isPart2)) return true;
         
-        if(isPart2 && pos <= line.length - 1)
-            if(isValidTest(line, pos + 1, Long.parseLong(exp_value + "" + curr_value), value, isPart2)) return true; 
+        if(isPart2 && pos <= line.length - 1 &&
+            isValidTest(line, pos + 1, Long.parseLong(exp_value + "" + curr_value), value, isPart2)) return true; 
                 
         return false;        
     }
