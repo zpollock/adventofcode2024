@@ -20,7 +20,7 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 7   | Java + Python | Complete      | Basic     | ⚡ Crushed It 
 | 8   | Java          | Complete      | Too Easy  | 😏 Eh
 | 9   | Java          | Complete      | So So     | 😎 Finally Finished!
-| 10  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 10  | Java          | Complete      | Kind     | ⚡ Crushed It
 | 11  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 12  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 | 13  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
