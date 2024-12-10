@@ -59,16 +59,16 @@ public class Day10 extends Day {
             return;
         }
 
-        if(Utils.isInBoundsInt(row - 1, col, trailmap) && trailmap[row-1][col] == trailmap[row][col] + 1) {
+        if(Utils.isInBounds(row - 1, col, trailmap) && trailmap[row-1][col] == trailmap[row][col] + 1) {
             bfs(trailmap, row -1, col, stepsCount, visited);
         }
-        if(Utils.isInBoundsInt(row + 1, col, trailmap) && trailmap[row+1][col] == trailmap[row][col] + 1) {
+        if(Utils.isInBounds(row + 1, col, trailmap) && trailmap[row+1][col] == trailmap[row][col] + 1) {
             bfs(trailmap, row + 1, col, stepsCount, visited);
         }
-        if(Utils.isInBoundsInt(row, col-1, trailmap) && trailmap[row][col-1] == trailmap[row][col] + 1) {
+        if(Utils.isInBounds(row, col-1, trailmap) && trailmap[row][col-1] == trailmap[row][col] + 1) {
             bfs(trailmap, row, col-1, stepsCount, visited);
         }
-        if(Utils.isInBoundsInt(row, col+1, trailmap) && trailmap[row][col+1] == trailmap[row][col] + 1) {
+        if(Utils.isInBounds(row, col+1, trailmap) && trailmap[row][col+1] == trailmap[row][col] + 1) {
             bfs(trailmap, row, col+1, stepsCount, visited);
         }
     }

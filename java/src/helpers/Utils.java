@@ -159,6 +159,10 @@ public class Utils {
         return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
     }
 
+    public static boolean isInBounds(int row, int col, int[][] grid) {
+        return row >= 0 && row < grid.length && col >= 0 && col < grid[0].length;
+    }
+
     public static char[][] convertToCharGrid(ArrayList<String> grid) {
         char[][] charGrid = new char[grid.size()][];
         for (int i = 0; i < grid.size(); i++) {
