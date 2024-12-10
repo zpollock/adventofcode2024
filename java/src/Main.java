@@ -9,11 +9,11 @@ public class Main {
     public static void main(String[] args) {
         Instant start = Instant.now();
 
-        //Day8        
-        Assert.assertEquals("14", processDay("d8_1_example.txt", new Day8(), false));
-        processDay("d8_1.txt", new Day8(), false);        
-        Assert.assertEquals("34", processDay("d8_1_example.txt", new Day8(), true)); //Part 2
-        processDay("d8_1.txt", new Day8(), true); //Part 2  
+        //Day9        
+        Assert.assertEquals("1928", processDay("d9_1_example.txt", new Day9(), false));
+        processDay("d9_1.txt", new Day9(), false);        
+        Assert.assertEquals("2858", processDay("d9_1_example.txt", new Day9(), true)); //Part 2
+        processDay("d9_1.txt", new Day9(), true); //Part 2  
 
         Instant finish = Instant.now();
         long timeElapsed = Duration.between(start, finish).toMillis();
