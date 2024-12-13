@@ -21,21 +21,8 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 8   | Java          | Complete      | Too Easy  | 😏 Eh
 | 9   | Java          | Complete      | So So     | 😎 Finally Finished!
 | 10  | Java          | Complete      | Kind     | ⚡ Crushed It
-| 11  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 11  | Java          | Complete      | Moderate     | 🤠 Remember To Memo 
 | 12  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 13  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 14  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 15  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 16  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 17  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 18  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 19  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 20  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 21  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 22  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 23  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 24  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
-| 25  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 
 ### 📜 License
 
