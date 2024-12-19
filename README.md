@@ -26,7 +26,8 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 13  | Java          | Complete      | Easy        | 😎 I like Math 
 | 14  | Java          | Complete      | Moderate     | 👍 Creative Puzzle 
 | 15  | Java          | Complete      | Challenging     | ⛵ Making Progress
-| 16  | Pending       | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 16  | Java          | Complete      | 3 Hour Struggle     | 🦄 I'm fantastic
+| 17  | Pending       | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 
 ### 📜 License
 
