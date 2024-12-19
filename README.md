@@ -21,11 +21,12 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 8   | Java          | Complete      | Too Easy  | 😏 Eh
 | 9   | Java          | Complete      | So So     | 😎 Finally Finished!
 | 10  | Java          | Complete      | Kind     | ⚡ Crushed It
-| 11  | Java          | Complete      | Moderate     | 🤠 Remember To Memo 
-| 12  | Java          | Part 1        | Hard     | 😱 Ug, Part 2  
+| 11  | Java          | Complete      | Moderate     | 🤠 Remember to Memo 
+| 12  | Java          | Complete      | Painful     | 😱 Dang You Part 2  
 | 13  | Java          | Complete      | Easy        | 😎 I like Math 
 | 14  | Java          | Complete      | Moderate     | 👍 Creative Puzzle 
-| 15  | Coming Soon   | Pending       | Hopeful     | 🤠 Cowboy Confidence 
+| 15  | Java          | Complete      | Challenging     | ⛵ Making Progress
+| 16  | Pending       | Pending       | Hopeful     | 🤠 Cowboy Confidence 
 
 ### 📜 License
 
