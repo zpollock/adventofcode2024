@@ -42,7 +42,7 @@ public class Day17 extends Day {
         return String.valueOf(ret);
     }
 
-    private static long findAWithBacktracking(long a, int[] program, String searchString, int matchedIndex, long maxA, String lastOutput) {
+    private static long findA(long a, int[] program, String searchString, int matchedIndex, long maxA, String lastOutput) {
         if (matchedIndex == searchString.length()) {
                 return a;
         }
@@ -51,7 +51,7 @@ public class Day17 extends Day {
         for (long nextA = a; nextA < maxA; nextA += step) {
             String programOutput = runProgram(nextA, 0, 0, program, searchString, true);            
             if (programOutput.substring(searchString.length() - matchedIndex - 1).startsWith(searchString.substring(searchString.length() - matchedIndex - 1))) {
-                long result = findAWithBacktracking(nextA, program, searchString, matchedIndex + 1, maxA, programOutput);
+                long result = findA(nextA, program, searchString, matchedIndex + 1, maxA, programOutput);
                 if (result != -1) {
                     return result; 
                 }
@@ -63,7 +63,7 @@ public class Day17 extends Day {
     public static long findA(int[] program, String searchString) {
         long maxA = (long)Math.pow(8, program.length);
         long minA = (long) Math.pow(8, program.length-1);
-        return findAWithBacktracking(minA, program, searchString, 0, maxA, "");
+        return findA(minA, program, searchString, 0, maxA, "");
     }
 
     private static String runProgram(long regA, long regB, long regC, int[] program, String searchString, boolean isPart2) {
