@@ -13,6 +13,7 @@ import java.util.HashSet;
 import java.util.PriorityQueue;
 
 import src.helpers.Coordinate;
+import src.helpers.Position;
 import src.helpers.Utils;
 import src.helpers.Coordinate.Direction;
 
@@ -136,16 +137,4 @@ public class Day18 extends Day {
 
         return null;
     }    
-}
-
-
-class Position extends Coordinate implements Comparable<Position>{
-    public Position parent = null;
-    public Direction direction;
-    public long cost;
-
-    @Override
-    public int compareTo(Position other) {
-        return Long.compare(this.cost, other.cost);
-    }
 }

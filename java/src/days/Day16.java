@@ -12,6 +12,7 @@ import java.util.PriorityQueue;
 import src.helpers.Coordinate;
 import src.helpers.Utils;
 import src.helpers.Coordinate.Direction;
+import src.helpers.Position;
 
 public class Day16 extends Day {
     @Override
@@ -114,16 +115,4 @@ public class Day16 extends Day {
 
         return path.size() + 1;
     }    
-}
-
-
-class Position extends Coordinate implements Comparable<Position>{
-    public Position parent = null;
-    public Direction direction;
-    public long cost;
-
-    @Override
-    public int compareTo(Position other) {
-        return Long.compare(this.cost, other.cost);
-    }
 }
