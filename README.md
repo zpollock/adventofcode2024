@@ -30,7 +30,7 @@ Nobody likes programming for money, but for free? Let's do this! 💸🚀
 | 17  | Java          | Complete      | The Struggle Continues     | 😪 Sleepy
 | 18  | Java          | Complete      | Easy     | 😎 There's Still a Path 
 | 19  | Java          | Complete      | Easy     | 😎 This Again
-| 20  | Pending       | Pending       | Hopeful     | 🤠 Confused Cowboy
+| 20  | Java          | Part 1        | I feel like it should work     | 🤠 Confused Cowboy
 | 21  | Java          | Part 1        | Painful     | 😱 Try Again Later
 | 22  | Java          | Complete      | Moderate     | 😎 Back on Track
 | 23  | Java          | Complete      | Moderate     | 😎 Almost There

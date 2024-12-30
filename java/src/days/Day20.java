@@ -10,12 +10,16 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
+import java.util.Map.Entry;
 
 import src.helpers.Coordinate;
 import src.helpers.Coordinate.Direction;
 import src.helpers.Position;
+import src.helpers.Paths;
 import src.helpers.Utils;
 
 public class Day20 extends Day {
@@ -52,182 +56,67 @@ public class Day20 extends Day {
         }
 
         char[][] grid = Utils.convertToCharGrid(inputList);
-
-        ret = (isPart2) ? partTwoHelper(null) : partOneHelper(grid, start, end);
+        int[][] moveCheatSquares = isPart2 ? generateMoveSquares(6) : generateMoveSquares(2);
+        int timeToBeat = isPart2 ? 
+            (row > 15 ? 100 : 52) : 
+            (row > 15 ? 100 : 6);
+        ret = pathWithCheats(grid, start, end, moveCheatSquares, timeToBeat);
         return String.valueOf(ret);
-    }
-
-    private static int partOneHelper(char[][] grid, Position start, Position end) {
-        int shortestPath = dijkstra(grid, start, end).size();  
-        int timeToBeat = shortestPath > 100 ? shortestPath : 84;      
-        ArrayList<Integer> cheatPaths = dijkstraWithCheats(grid, start, end, timeToBeat);
-        return cheatPaths.size();
-    }
-
-
-    private static int partTwoHelper(int[] line) {
-        return 0;
-    }
-
-    private static ArrayList<Integer> dijkstraWithCheats(char[][] grid, Position start, Position end, int timeToBeat) {
-        ArrayList<Integer> cheatPaths = new ArrayList<>();
-        int rows = grid.length;
-        int cols = grid[0].length;
+    }     
     
-        //Set<String> visited = new HashSet<>();
-        Set<String> uniquePaths = new HashSet<>();
-        
-        long[][] minCost = new long[rows][cols];
-        for (long[] row : minCost) {
-            Arrays.fill(row, Long.MAX_VALUE);            
-        }
-        minCost[start.y][start.x] = 0;
     
-        PriorityQueue<Position> pq = new PriorityQueue<>();
-        start.cost = 0;
-        start.direction = Direction.RIGHT;
-        start.extra = 2; 
-        pq.offer(start);
+    private static int pathWithCheats(char[][] grid, Position start, Position end, int[][] moveCheatSquares, int timeToBeat) {
+        HashMap<String, Long> path = Paths.dijkstra(grid, start, end, Coordinate.DIRECTIONS_WO_DIAGONALS);
+        HashSet<String> validCheats = new HashSet<>();
     
-        while (!pq.isEmpty()) {
-            Position current = pq.poll();
-            
-            if (current.cost > timeToBeat) {
-                continue;
-            }
-            
-            if (current.x == end.x && current.y == end.y) {
-                StringBuilder pathKey = new StringBuilder();
-                Position temp = current;
-                int pathLength = 0;
-                
-                while (temp != null) {
-                    pathKey.insert(0, String.format(",%d,%d", temp.x, temp.y));
-                    pathLength++;
-                    temp = temp.parent;
-                }
-                
-                if (uniquePaths.add(pathKey.toString())) {
-                    cheatPaths.add(pathLength - 1);
-                }
+        for (Map.Entry<String, Long> entry : path.entrySet()) {
+            String[] coords = entry.getKey().split(",");
+            int y = Integer.parseInt(coords[0]);
+            int x = Integer.parseInt(coords[1]);
+    
+            if ((x == start.x && y == start.y) || (x == end.x && y == end.y)) {
                 continue;
             }
     
-            for (int[] d : Coordinate.DIRECTIONS_WO_DIAGONALS) {         
-                int newX = current.x + d[0];
-                int newY = current.y + d[1];
+            long currentDistance = entry.getValue();
+    
+            for (int[] move : moveCheatSquares) {
+                int newY = y + move[0];
+                int newX = x + move[1];
                 
                 if (!Utils.isInBounds(newY, newX, grid)) {
                     continue;
                 }
-    
-                Position next = new Position(newX, newY);
-                next.parent = current;
-                next.cost = current.cost + 1;
-                next.extra = current.extra;
-    
-                if (d[0] == 1 && d[1] == 0) next.direction = Direction.RIGHT;
-                if (d[0] == -1 && d[1] == 0) next.direction = Direction.LEFT;
-                if (d[0] == 0 && d[1] == 1) next.direction = Direction.UP;
-                if (d[0] == 0 && d[1] == -1) next.direction = Direction.DOWN;
-    
-                if (isOppositeDirection(current.direction, next.direction)) {
+                
+                String newPos = newY + "," + newX;
+                if (!path.containsKey(newPos)) {
                     continue;
                 }
     
-                boolean isValidMove = false;
-                if (grid[newY][newX] != '#') {
-                    isValidMove = true;
-                    if(next.extra == 1) next.extra = 0;
-                } else if (next.extra > 0) {
-                    isValidMove = true;
-                    next.extra--; 
-                }
+                long targetDistance = path.get(newPos);
+                long manhattanDistance = Math.abs(newY - y) + Math.abs(newX - x);
+                long cheatDistance = currentDistance + manhattanDistance;
     
-                if (isValidMove) {
-                    Position temp = next.parent;
-                    while (temp != null) {
-                        if (temp.x == next.x && temp.y == next.y) {
-                            isValidMove = false;
-                            break;
-                        }
-                        temp = temp.parent;
-                    }
-                }
-    
-                if (isValidMove && next.cost <= minCost[newY][newX]) {
-                    minCost[newY][newX] = next.cost;
-                    pq.offer(next);
+                if (targetDistance - cheatDistance >= timeToBeat) {
+                    validCheats.add(y + "," + x + "-" + newPos);
                 }
             }
         }
     
-        return cheatPaths;
+        return validCheats.size();
     }
+    
 
-    private static boolean isOppositeDirection(Direction dir1, Direction dir2) {
-        return (dir1 == Direction.RIGHT && dir2 == Direction.LEFT) ||
-            (dir1 == Direction.LEFT && dir2 == Direction.RIGHT) ||
-            (dir1 == Direction.UP && dir2 == Direction.DOWN) ||
-            (dir1 == Direction.DOWN && dir2 == Direction.UP);
-    }
-
-    private static HashSet<String> dijkstra(char[][] grid, Position start, Position end) {
-        HashSet<String> path = new HashSet<>();
-        int rows = grid.length;
-        int cols = grid[0].length;
-
-        long[][] minCost = new long[rows][cols];
-        for (long[] row : minCost) {
-            Arrays.fill(row, Long.MAX_VALUE);            
-        }
-        minCost[start.y][start.x] = 0;
-
-        PriorityQueue<Position> pq = new PriorityQueue<>();
-        start.cost = 0;
-        start.direction = Direction.RIGHT;
-        pq.offer(start);
-
-        while (!pq.isEmpty()) {
-            Position currentPosition = pq.poll();         
-                        
-            if (currentPosition.cost > minCost[currentPosition.y][currentPosition.x]) continue;
-
-            for(int[] d : Coordinate.DIRECTIONS_WO_DIAGONALS) {         
-                int newX = currentPosition.x + d[0];
-                int newY = currentPosition.y + d[1];
-                Position newPosition = new Position();
-                newPosition.x = newX;
-                newPosition.y = newY;
-
-                if(d[0] == 1 && d[1] == 0) newPosition.direction = Direction.RIGHT;
-                if(d[0] == -1 && d[1] == 0) newPosition.direction = Direction.LEFT;
-                if(d[0] == 0 && d[1] == 1) newPosition.direction = Direction.UP;
-                if(d[0] == 0 && d[1] == -1) newPosition.direction = Direction.DOWN;
-
-                if (isOppositeDirection(currentPosition.direction, newPosition.direction)) {
-                    continue;
-                }
-                
-                long newCost = currentPosition.cost + 1;
-                newPosition.cost = newCost;
-                if (newPosition.x == end.x && newPosition.y == end.y) {
-                    Position temp = currentPosition;
-                    while (temp != null) {
-                        path.add(temp.y + "," + temp.x);
-                        temp = temp.parent;
-                    }                
-                    return path;
-                }
-                
-                if(Utils.isInBounds(newY, newX, grid) && grid[newY][newX] == '.' && newCost < minCost[newY][newX]) {
-                    minCost[newY][newX] = newCost;
-                    newPosition.parent = currentPosition;
-                    pq.offer(newPosition);
+    private static int[][] generateMoveSquares(int numMoves) {
+        List<int[]> moves = new ArrayList<>();
+        for (int dy = -numMoves; dy <= numMoves; dy++) {
+            for (int dx = -numMoves; dx <= numMoves; dx++) {
+                if (Math.abs(dy) + Math.abs(dx) == numMoves) {
+                    moves.add(new int[]{dy, dx});
                 }
             }
         }
-
-        return null;
-    }    
+        
+        return moves.toArray(new int[0][]);
+    }       
 }
